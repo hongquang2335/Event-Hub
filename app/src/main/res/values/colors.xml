@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="vibe_green">#2DC275</color>
+    <color name="vibe_green_dark">#006D3D</color>
+    <color name="vibe_green_deep">#004927</color>
+    <color name="vibe_mint">#D1FAE5</color>
+    <color name="vibe_canvas">#FCF9F8</color>
+    <color name="vibe_surface">#FFFFFF</color>
+    <color name="vibe_stroke">#E4E2E1</color>
+    <color name="vibe_text">#1B1C1C</color>
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+</resources>
