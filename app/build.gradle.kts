@@ -4,15 +4,11 @@ plugins {
 }
 
 android {
-    namespace = "com.example.eventticket"
-    compileSdk {
-        version = release(36) {
-            minorApiLevel = 1
-        }
-    }
+    namespace = "com.example.myapplication"
+    compileSdk = 36
 
     defaultConfig {
-        applicationId = "com.example.eventticket"
+        applicationId = "com.example.myapplication"
         minSdk = 24
         targetSdk = 36
         versionCode = 1
@@ -52,11 +48,6 @@ dependencies {
     implementation(libs.androidx.compose.material3)
     implementation(libs.androidx.compose.material.icons.extended)
     implementation(libs.androidx.navigation.compose)
-    implementation(platform(libs.firebase.bom))
-    implementation(libs.firebase.auth)
-    implementation(libs.firebase.firestore)
-    implementation(libs.firebase.storage)
-    implementation(libs.firebase.messaging)
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
