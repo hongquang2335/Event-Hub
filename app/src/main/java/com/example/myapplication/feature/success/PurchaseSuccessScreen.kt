@@ -25,10 +25,10 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
-import com.example.myapplication.model.TicketWalletItem
-import com.example.myapplication.ui.components.TicketCard
-import com.example.myapplication.ui.theme.Evergreen
-import com.example.myapplication.ui.theme.MintWash
+import com.example.myapplication.domain.model.TicketWalletItem
+import com.example.myapplication.core.designsystem.component.TicketCard
+import com.example.myapplication.core.designsystem.theme.Evergreen
+import com.example.myapplication.core.designsystem.theme.MintWash
 
 @Composable
 fun PurchaseSuccessScreen(
@@ -63,3 +63,4 @@ fun PurchaseSuccessScreen(
         }
     }
 }
+

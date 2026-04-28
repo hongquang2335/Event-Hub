@@ -1,34 +1,35 @@
-package com.example.myapplication.data
+package com.example.myapplication.data.repository
 
 import com.example.myapplication.R
-import com.example.myapplication.model.Category
-import com.example.myapplication.model.CommunityPost
-import com.example.myapplication.model.Event
-import com.example.myapplication.model.EventMoment
-import com.example.myapplication.model.PaymentMethod
-import com.example.myapplication.model.SupportShortcut
-import com.example.myapplication.model.TicketStatus
-import com.example.myapplication.model.TicketTier
-import com.example.myapplication.model.TicketWalletItem
-import com.example.myapplication.model.TierStatus
-import com.example.myapplication.model.UserProfile
+import com.example.myapplication.domain.model.Category
+import com.example.myapplication.domain.model.CommunityPost
+import com.example.myapplication.domain.model.Event
+import com.example.myapplication.domain.model.EventMoment
+import com.example.myapplication.domain.model.PaymentMethod
+import com.example.myapplication.domain.model.SupportShortcut
+import com.example.myapplication.domain.model.TicketStatus
+import com.example.myapplication.domain.model.TicketTier
+import com.example.myapplication.domain.model.TicketWalletItem
+import com.example.myapplication.domain.model.TierStatus
+import com.example.myapplication.domain.model.UserProfile
+import com.example.myapplication.domain.repository.FanZoneRepository
 
-object FanZoneRepository {
-    val user = UserProfile(
+object FakeFanZoneRepository : FanZoneRepository {
+    override val user = UserProfile(
         name = "Nguyen Minh Tuan",
         membership = "Thanh vien Neon Rewards",
         city = "TP. Ho Chi Minh"
     )
 
-    val categories = listOf(
-        Category("art", "Art", "🎨"),
-        Category("cinema", "Cinema", "🎬"),
-        Category("festival", "Festivals", "🎪"),
-        Category("music", "Music", "🎵"),
-        Category("gaming", "Gaming", "🎮")
+    override val categories = listOf(
+        Category("art", "Art", "\uD83C\uDFA8"),
+        Category("cinema", "Cinema", "\uD83C\uDFAC"),
+        Category("festival", "Festivals", "\uD83C\uDFAA"),
+        Category("music", "Music", "\uD83C\uDFB5"),
+        Category("gaming", "Gaming", "\uD83C\uDFAE")
     )
 
-    val events = listOf(
+    override val events = listOf(
         Event(
             id = "neon-night",
             title = "Neon Nights Festival 2024",
@@ -71,14 +72,14 @@ object FanZoneRepository {
         )
     )
 
-    val tiers = listOf(
+    override val tiers = listOf(
         TicketTier("vip", "neon-night", "Zone A (VIP)", "Gan san khau nhat, loi di rieng, do uong mien phi", 2_500_000, TierStatus.LIMITED),
         TicketTier("standard", "neon-night", "Zone B (Standard)", "Tam nhin bao quat, khu dung chung", 800_000, TierStatus.AVAILABLE),
         TicketTier("earlybird", "neon-night", "Zone C (Early Bird)", "Gia uu dai mo ban som", 500_000, TierStatus.SOLD_OUT),
         TicketTier("expo-pass", "art-expo", "Pass Gallery", "Truy cap tron ngay va talkshow", 350_000, TierStatus.AVAILABLE)
     )
 
-    val posts = listOf(
+    override val posts = listOf(
         CommunityPost(
             id = "p1",
             author = "Minh Tuan",
@@ -101,7 +102,7 @@ object FanZoneRepository {
         )
     )
 
-    val walletSeed = listOf(
+    override val walletSeed = listOf(
         TicketWalletItem(
             id = "seed-1",
             eventId = "art-expo",
@@ -114,16 +115,17 @@ object FanZoneRepository {
         )
     )
 
-    val paymentMethods = listOf(
+    override val paymentMethods = listOf(
         PaymentMethod("visa", "Visa/Mastercard", "The quoc te va noi dia"),
         PaymentMethod("bank", "Chuyen khoan ngan hang", "Xac nhan tu dong trong 1-3 phut"),
         PaymentMethod("apple", "Apple Pay", "Thanh toan mot cham")
     )
 
-    val supportShortcuts = listOf(
+    override val supportShortcuts = listOf(
         SupportShortcut("refund", "Chinh sach hoan ve"),
         SupportShortcut("invoice", "Lay hoa don VAT"),
         SupportShortcut("transfer", "Huong dan chuyen nhuong"),
         SupportShortcut("scan", "Huong dan check-in")
     )
 }
+

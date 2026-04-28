@@ -1,4 +1,4 @@
-package com.example.myapplication.ui.theme
+package com.example.myapplication.core.designsystem.theme
 
 import androidx.compose.material3.Typography
 import androidx.compose.ui.text.TextStyle
@@ -42,3 +42,4 @@ val FanZoneTypography = Typography(
         lineHeight = 18.sp
     )
 )
+

@@ -1,26 +1,30 @@
 package com.example.myapplication.ui.state
 
 import androidx.lifecycle.ViewModel
-import com.example.myapplication.data.FanZoneRepository
-import com.example.myapplication.model.TicketStatus
-import com.example.myapplication.model.TicketWalletItem
+import com.example.myapplication.app.AppDependencies
+import com.example.myapplication.domain.model.TicketStatus
+import com.example.myapplication.domain.model.TicketWalletItem
+import com.example.myapplication.domain.repository.FanZoneRepository
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.update
 
-class FanZoneViewModel : ViewModel() {
+class FanZoneViewModel(
+    private val repository: FanZoneRepository = AppDependencies.fanZoneRepository
+) : ViewModel() {
     private val _uiState = MutableStateFlow(
         FanZoneUiState(
-            user = FanZoneRepository.user,
-            events = FanZoneRepository.events,
-            tiers = FanZoneRepository.tiers,
-            posts = FanZoneRepository.posts,
-            walletItems = FanZoneRepository.walletSeed,
-            paymentMethods = FanZoneRepository.paymentMethods,
-            supportShortcuts = FanZoneRepository.supportShortcuts,
-            selectedEventId = FanZoneRepository.events.first().id,
-            selectedPaymentMethod = FanZoneRepository.paymentMethods.first().id,
+            user = repository.user,
+            categories = repository.categories,
+            events = repository.events,
+            tiers = repository.tiers,
+            posts = repository.posts,
+            walletItems = repository.walletSeed,
+            paymentMethods = repository.paymentMethods,
+            supportShortcuts = repository.supportShortcuts,
+            selectedEventId = repository.events.first().id,
+            selectedPaymentMethod = repository.paymentMethods.first().id,
             unreadSupportCount = 2,
             tierQuantities = emptyMap()
         )
@@ -28,7 +32,13 @@ class FanZoneViewModel : ViewModel() {
     val uiState: StateFlow<FanZoneUiState> = _uiState.asStateFlow()
 
     fun selectEvent(eventId: String) {
-        _uiState.update { it.copy(selectedEventId = eventId) }
+        _uiState.update { state ->
+            if (state.events.any { it.id == eventId }) {
+                state.copy(selectedEventId = eventId)
+            } else {
+                state
+            }
+        }
     }
 
     fun selectPaymentMethod(methodId: String) {
@@ -42,6 +52,12 @@ class FanZoneViewModel : ViewModel() {
                     put(tierId, quantity.coerceAtLeast(0))
                 }
             )
+        }
+    }
+
+    fun setTierQuantities(quantities: Map<String, Int>) {
+        _uiState.update { state ->
+            state.copy(tierQuantities = quantities.mapValues { it.value.coerceAtLeast(0) })
         }
     }
 
@@ -76,3 +92,4 @@ class FanZoneViewModel : ViewModel() {
         return ticket
     }
 }
+

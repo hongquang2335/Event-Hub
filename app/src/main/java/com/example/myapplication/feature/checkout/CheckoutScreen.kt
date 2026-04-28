@@ -17,14 +17,14 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
-import com.example.myapplication.model.Event
-import com.example.myapplication.model.PaymentMethod
-import com.example.myapplication.model.TicketTier
-import com.example.myapplication.ui.components.AppTopBar
-import com.example.myapplication.ui.components.BookingFooter
-import com.example.myapplication.ui.components.CheckoutSummaryCard
-import com.example.myapplication.ui.components.PaymentMethodCard
-import com.example.myapplication.ui.components.formatPrice
+import com.example.myapplication.domain.model.Event
+import com.example.myapplication.domain.model.PaymentMethod
+import com.example.myapplication.domain.model.TicketTier
+import com.example.myapplication.core.designsystem.component.AppTopBar
+import com.example.myapplication.core.designsystem.component.BookingFooter
+import com.example.myapplication.core.designsystem.component.CheckoutSummaryCard
+import com.example.myapplication.core.designsystem.component.PaymentMethodCard
+import com.example.myapplication.core.designsystem.component.formatPrice
 
 @Composable
 fun CheckoutScreen(
@@ -98,3 +98,4 @@ private fun PaymentPanel(
         }
     }
 }
+

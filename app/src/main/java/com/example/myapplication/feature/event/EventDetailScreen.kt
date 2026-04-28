@@ -30,17 +30,20 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.LocationOn
 import androidx.compose.material.icons.filled.Schedule
-import com.example.myapplication.model.Event
-import com.example.myapplication.model.TicketTier
-import com.example.myapplication.ui.components.AppTopBar
-import com.example.myapplication.ui.components.ArtistRow
-import com.example.myapplication.ui.components.BookingFooter
-import com.example.myapplication.ui.components.InfoPanel
-import com.example.myapplication.ui.components.NoticeCard
-import com.example.myapplication.ui.components.SectionHeader
-import com.example.myapplication.ui.components.TimelineColumn
-import com.example.myapplication.ui.components.VenueMapCard
-import com.example.myapplication.ui.components.formatPrice
+import com.example.myapplication.domain.model.Event
+import com.example.myapplication.domain.model.TicketTier
+import com.example.myapplication.core.designsystem.component.AppTopBar
+import com.example.myapplication.core.designsystem.component.ArtistRow
+import com.example.myapplication.core.designsystem.component.BookingFooter
+import com.example.myapplication.core.designsystem.component.InfoPanel
+import com.example.myapplication.core.designsystem.component.NoticeCard
+import com.example.myapplication.core.designsystem.component.SectionHeader
+import com.example.myapplication.core.designsystem.component.TimelineColumn
+import com.example.myapplication.core.designsystem.component.VenueMapCard
+import com.example.myapplication.core.designsystem.component.formatPrice
+import com.example.myapplication.core.designsystem.theme.Evergreen
+import com.example.myapplication.core.designsystem.theme.SoftText
+import com.example.myapplication.core.designsystem.theme.SurfaceCard
 
 @Composable
 fun EventDetailScreen(
@@ -55,7 +58,7 @@ fun EventDetailScreen(
         val minPrice = tiers.minOfOrNull { it.price }?.let(::formatPrice)
 
         Scaffold(
-            topBar = { AppTopBar(title = "Neon Nights Festival", onBack = onBack) },
+            topBar = { AppTopBar(title = event.title, onBack = onBack) },
             bottomBar = { if (!isExpanded) BookingFooter("Dat ve ngay", minPrice, onClick = onBuyNow) },
             containerColor = MaterialTheme.colorScheme.background
         ) { innerPadding ->
@@ -110,7 +113,7 @@ private fun EventDetailBody(event: Event, tiers: List<TicketTier>, modifier: Mod
         }
         item {
             SectionHeader("Gioi thieu su kien", null)
-            Text(event.description, color = com.example.myapplication.ui.theme.SoftText, style = MaterialTheme.typography.bodyLarge)
+            Text(event.description, color = SoftText, style = MaterialTheme.typography.bodyLarge)
         }
         item {
             SectionHeader("Nghe si tham gia", null)
@@ -143,13 +146,13 @@ private fun SideBookingPanel(
     Card(modifier = modifier, colors = CardDefaults.cardColors(containerColor = androidx.compose.ui.graphics.Color.White), shape = RoundedCornerShape(30.dp)) {
         Column(modifier = Modifier.padding(22.dp), verticalArrangement = Arrangement.spacedBy(14.dp)) {
             Text("Booking panel", style = MaterialTheme.typography.titleLarge)
-            Text(event.subtitle, color = com.example.myapplication.ui.theme.SoftText)
+            Text(event.subtitle, color = SoftText)
             tiers.forEach { tier ->
-                Surface(shape = RoundedCornerShape(22.dp), color = com.example.myapplication.ui.theme.SurfaceCard) {
+                Surface(shape = RoundedCornerShape(22.dp), color = SurfaceCard) {
                     Column(modifier = Modifier.fillMaxWidth().padding(14.dp), verticalArrangement = Arrangement.spacedBy(4.dp)) {
                         Text(tier.name, fontWeight = FontWeight.SemiBold)
-                        Text(tier.benefits, color = com.example.myapplication.ui.theme.SoftText, style = MaterialTheme.typography.bodyMedium)
-                        Text(formatPrice(tier.price), color = com.example.myapplication.ui.theme.Evergreen, fontWeight = FontWeight.Bold)
+                        Text(tier.benefits, color = SoftText, style = MaterialTheme.typography.bodyMedium)
+                        Text(formatPrice(tier.price), color = Evergreen, fontWeight = FontWeight.Bold)
                     }
                 }
             }
@@ -159,3 +162,4 @@ private fun SideBookingPanel(
         }
     }
 }
+

@@ -25,16 +25,16 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
-import com.example.myapplication.model.Category
-import com.example.myapplication.model.Event
-import com.example.myapplication.ui.components.CategoryPill
-import com.example.myapplication.ui.components.CircleAvatar
-import com.example.myapplication.ui.components.EventCard
-import com.example.myapplication.ui.components.FlowCategoryRow
-import com.example.myapplication.ui.components.HeroBanner
-import com.example.myapplication.ui.components.HomeSwitchChip
-import com.example.myapplication.ui.components.SectionHeader
-import com.example.myapplication.ui.theme.SoftText
+import com.example.myapplication.domain.model.Category
+import com.example.myapplication.domain.model.Event
+import com.example.myapplication.core.designsystem.component.CategoryPill
+import com.example.myapplication.core.designsystem.component.CircleAvatar
+import com.example.myapplication.core.designsystem.component.EventCard
+import com.example.myapplication.core.designsystem.component.FlowCategoryRow
+import com.example.myapplication.core.designsystem.component.HeroBanner
+import com.example.myapplication.core.designsystem.component.HomeSwitchChip
+import com.example.myapplication.core.designsystem.component.SectionHeader
+import com.example.myapplication.core.designsystem.theme.SoftText
 
 @Composable
 fun HomeScreen(
@@ -116,3 +116,4 @@ fun HomeScreen(
         }
     }
 }
+

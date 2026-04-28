@@ -16,9 +16,9 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
-import com.example.myapplication.model.SupportShortcut
-import com.example.myapplication.ui.components.AppTopBar
-import com.example.myapplication.ui.components.MessageBubble
+import com.example.myapplication.domain.model.SupportShortcut
+import com.example.myapplication.core.designsystem.component.AppTopBar
+import com.example.myapplication.core.designsystem.component.MessageBubble
 
 @Composable
 fun SupportScreen(
@@ -68,3 +68,4 @@ fun SupportScreen(
         }
     }
 }
+

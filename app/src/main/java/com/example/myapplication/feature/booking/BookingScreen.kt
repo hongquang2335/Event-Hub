@@ -15,14 +15,14 @@ import androidx.compose.material3.Scaffold
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
-import com.example.myapplication.model.Event
-import com.example.myapplication.model.TicketTier
-import com.example.myapplication.ui.components.AppTopBar
-import com.example.myapplication.ui.components.BookingFooter
-import com.example.myapplication.ui.components.SectionHeader
-import com.example.myapplication.ui.components.TierCard
-import com.example.myapplication.ui.components.VenueMapCard
-import com.example.myapplication.ui.components.formatPrice
+import com.example.myapplication.domain.model.Event
+import com.example.myapplication.domain.model.TicketTier
+import com.example.myapplication.core.designsystem.component.AppTopBar
+import com.example.myapplication.core.designsystem.component.BookingFooter
+import com.example.myapplication.core.designsystem.component.SectionHeader
+import com.example.myapplication.core.designsystem.component.TierCard
+import com.example.myapplication.core.designsystem.component.VenueMapCard
+import com.example.myapplication.core.designsystem.component.formatPrice
 
 @Composable
 fun BookingScreen(
@@ -97,3 +97,4 @@ private fun TierColumn(
         }
     }
 }
+

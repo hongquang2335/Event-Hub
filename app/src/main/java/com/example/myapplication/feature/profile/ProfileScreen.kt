@@ -23,12 +23,12 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
-import com.example.myapplication.model.UserProfile
-import com.example.myapplication.ui.components.CircleAvatar
-import com.example.myapplication.ui.components.ProfileActionRow
-import com.example.myapplication.ui.components.SectionHeader
-import com.example.myapplication.ui.theme.Evergreen
-import com.example.myapplication.ui.theme.SoftText
+import com.example.myapplication.domain.model.UserProfile
+import com.example.myapplication.core.designsystem.component.CircleAvatar
+import com.example.myapplication.core.designsystem.component.ProfileActionRow
+import com.example.myapplication.core.designsystem.component.SectionHeader
+import com.example.myapplication.core.designsystem.theme.Evergreen
+import com.example.myapplication.core.designsystem.theme.SoftText
 
 @Composable
 fun ProfileScreen(
@@ -109,3 +109,4 @@ fun ProfileScreen(
         }
     }
 }
+

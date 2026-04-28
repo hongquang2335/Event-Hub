@@ -1,4 +1,4 @@
-package com.example.myapplication.ui.theme
+package com.example.myapplication.core.designsystem.theme
 
 import androidx.compose.ui.graphics.Color
 
@@ -13,3 +13,4 @@ val SoftLine = Color(0xFFE8DFD8)
 val SoftText = Color(0xFF6F6761)
 val Danger = Color(0xFFD94949)
 val Warning = Color(0xFFF59E0B)
+

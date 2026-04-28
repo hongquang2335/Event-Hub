@@ -6,8 +6,8 @@ import androidx.compose.ui.test.junit4.createAndroidComposeRule
 import androidx.compose.ui.test.onNodeWithText
 import androidx.compose.ui.test.performClick
 import com.example.myapplication.feature.success.PurchaseSuccessScreen
-import com.example.myapplication.model.TicketStatus
-import com.example.myapplication.model.TicketWalletItem
+import com.example.myapplication.domain.model.TicketStatus
+import com.example.myapplication.domain.model.TicketWalletItem
 import org.junit.Assert.assertEquals
 import org.junit.Rule
 import org.junit.Test
@@ -64,3 +64,4 @@ class PurchaseSuccessScreenTest {
         status = TicketStatus.UPCOMING
     )
 }
+

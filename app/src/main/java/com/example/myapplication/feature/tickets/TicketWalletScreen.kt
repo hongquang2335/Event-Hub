@@ -13,29 +13,46 @@ import androidx.compose.foundation.lazy.items
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
-import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.saveable.rememberSaveable
-import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
-import com.example.myapplication.model.TicketStatus
-import com.example.myapplication.model.TicketWalletItem
-import com.example.myapplication.ui.components.EmptyStateCard
-import com.example.myapplication.ui.components.SectionHeader
-import com.example.myapplication.ui.components.TicketCard
-import com.example.myapplication.ui.components.TicketStatusFilter
+import androidx.lifecycle.compose.collectAsStateWithLifecycle
+import androidx.lifecycle.viewmodel.compose.viewModel
+import com.example.myapplication.domain.model.TicketStatus
+import com.example.myapplication.domain.model.TicketWalletItem
+import com.example.myapplication.core.designsystem.component.EmptyStateCard
+import com.example.myapplication.core.designsystem.component.SectionHeader
+import com.example.myapplication.core.designsystem.component.TicketCard
+import com.example.myapplication.core.designsystem.component.TicketStatusFilter
+
+@Composable
+fun TicketWalletRoute(
+    tickets: List<TicketWalletItem>,
+    onOpenEvent: (String) -> Unit,
+    modifier: Modifier = Modifier,
+    viewModel: TicketWalletViewModel = viewModel()
+) {
+    val uiState by viewModel.uiState.collectAsStateWithLifecycle()
+
+    TicketWalletScreen(
+        tickets = tickets,
+        selectedStatus = uiState.selectedStatus,
+        onSelectStatus = viewModel::selectStatus,
+        onOpenEvent = onOpenEvent,
+        modifier = modifier
+    )
+}
 
 @Composable
 fun TicketWalletScreen(
     tickets: List<TicketWalletItem>,
+    selectedStatus: TicketStatus,
+    onSelectStatus: (TicketStatus) -> Unit,
     onOpenEvent: (String) -> Unit,
     modifier: Modifier = Modifier
 ) {
-    var selectedTab by rememberSaveable { mutableStateOf(TicketStatus.UPCOMING) }
-
     BoxWithConstraints(modifier = modifier.fillMaxSize().background(MaterialTheme.colorScheme.background)) {
         val isExpanded = maxWidth >= 720.dp
-        val filtered = tickets.filter { it.status == selectedTab }
+        val filtered = tickets.filter { it.status == selectedStatus }
 
         LazyColumn(
             modifier = Modifier.fillMaxSize().statusBarsPadding(),
@@ -43,7 +60,7 @@ fun TicketWalletScreen(
             verticalArrangement = Arrangement.spacedBy(20.dp)
         ) {
             item { SectionHeader("Ve cua toi", "Quan ly ve va QR check-in") }
-            item { TicketStatusFilter(selectedTab, onSelect = { selectedTab = it }) }
+            item { TicketStatusFilter(selectedStatus, onSelect = onSelectStatus) }
 
             if (filtered.isEmpty()) {
                 item { EmptyStateCard("Khong co ve o trang thai nay", "Mua mot su kien moi de lap day vi ve.") }
@@ -61,3 +78,4 @@ fun TicketWalletScreen(
         }
     }
 }
+

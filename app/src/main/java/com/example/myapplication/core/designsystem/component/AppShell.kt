@@ -1,4 +1,4 @@
-package com.example.myapplication.ui.components
+package com.example.myapplication.core.designsystem.component
 
 import androidx.compose.foundation.layout.RowScope
 import androidx.compose.foundation.layout.WindowInsets
@@ -28,9 +28,9 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.unit.dp
-import com.example.myapplication.navigation.BottomDestination
-import com.example.myapplication.ui.theme.Evergreen
-import com.example.myapplication.ui.theme.SoftText
+import com.example.myapplication.core.designsystem.theme.Evergreen
+import com.example.myapplication.core.designsystem.theme.SoftText
+import com.example.myapplication.core.navigation.BottomDestination
 
 @Composable
 fun AppBottomBar(
@@ -133,3 +133,4 @@ fun BookingFooter(
         }
     }
 }
+

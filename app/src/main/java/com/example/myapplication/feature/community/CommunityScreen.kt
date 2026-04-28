@@ -14,10 +14,10 @@ import androidx.compose.foundation.lazy.items
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
-import com.example.myapplication.model.CommunityPost
-import com.example.myapplication.ui.components.CommunityCard
-import com.example.myapplication.ui.components.GradientPanel
-import com.example.myapplication.ui.components.SectionHeader
+import com.example.myapplication.domain.model.CommunityPost
+import com.example.myapplication.core.designsystem.component.CommunityCard
+import com.example.myapplication.core.designsystem.component.GradientPanel
+import com.example.myapplication.core.designsystem.component.SectionHeader
 
 @Composable
 fun CommunityScreen(
@@ -63,3 +63,4 @@ fun CommunityScreen(
         }
     }
 }
+
