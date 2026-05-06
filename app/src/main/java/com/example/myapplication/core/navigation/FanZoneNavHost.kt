@@ -133,6 +133,10 @@ fun FanZoneNavHost(
         composable(AppDestination.Success.route) {
             PurchaseSuccessScreen(
                 ticket = uiState.latestPurchasedTicket,
+                onOpenEvent = { eventId ->
+                    viewModel.selectEvent(eventId)
+                    navController.navigate(AppDestination.EventDetail.create(eventId))
+                },
                 onOpenWallet = {
                     navController.navigate(AppDestination.Tickets.route) {
                         popUpTo(AppDestination.Home.route) { inclusive = false }

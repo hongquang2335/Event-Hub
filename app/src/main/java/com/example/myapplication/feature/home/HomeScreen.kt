@@ -74,18 +74,6 @@ fun HomeScreen(
                     }
                 }
             }
-            item {
-                Row(
-                    modifier = Modifier
-                        .fillMaxWidth()
-                        .background(Color.White, shape = androidx.compose.foundation.shape.RoundedCornerShape(28.dp))
-                        .padding(4.dp),
-                    horizontalArrangement = Arrangement.spacedBy(8.dp)
-                ) {
-                    HomeSwitchChip("Su kien", true, Modifier.weight(1f))
-                    HomeSwitchChip("Cong dong", false, Modifier.weight(1f), onClick = onOpenCommunity)
-                }
-            }
             item { HeroBanner(event = event, onOpenEvent = { onOpenEvent(event.id) }) }
             item { SectionHeader("Kham pha", "Khoi dong theo mood cua ban") }
             item {
@@ -116,4 +104,3 @@ fun HomeScreen(
         }
     }
 }
-

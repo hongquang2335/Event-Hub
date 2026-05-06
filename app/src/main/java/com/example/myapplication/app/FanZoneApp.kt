@@ -1,5 +1,6 @@
 package com.example.myapplication.app
 
+import android.annotation.SuppressLint
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
@@ -15,6 +16,7 @@ import com.example.myapplication.core.navigation.FanZoneNavHost
 import com.example.myapplication.core.navigation.bottomDestinations
 import com.example.myapplication.ui.state.FanZoneViewModel
 
+@SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
 @Composable
 fun FanZoneApp(
     viewModel: FanZoneViewModel = viewModel()

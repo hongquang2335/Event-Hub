@@ -1,6 +1,7 @@
 package com.example.myapplication.feature.success
 
 import androidx.compose.foundation.background
+import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
@@ -12,6 +13,7 @@ import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.windowInsetsPadding
 import androidx.compose.foundation.layout.WindowInsets
 import androidx.compose.foundation.layout.navigationBars
+import androidx.compose.foundation.verticalScroll
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.CheckCircle
@@ -35,6 +37,7 @@ fun PurchaseSuccessScreen(
     ticket: TicketWalletItem?,
     onOpenWallet: () -> Unit,
     onGoHome: () -> Unit,
+    onOpenEvent: (String) -> Unit = {},
     modifier: Modifier = Modifier
 ) {
     Scaffold(modifier = modifier.fillMaxSize(), containerColor = MaterialTheme.colorScheme.background) { innerPadding ->
@@ -43,7 +46,8 @@ fun PurchaseSuccessScreen(
                 .fillMaxSize()
                 .padding(innerPadding)
                 .padding(20.dp)
-                .windowInsetsPadding(WindowInsets.navigationBars),
+                .windowInsetsPadding(WindowInsets.navigationBars)
+                .verticalScroll(rememberScrollState()),
             verticalArrangement = Arrangement.spacedBy(18.dp)
         ) {
             Spacer(modifier = Modifier.height(20.dp))
@@ -57,7 +61,7 @@ fun PurchaseSuccessScreen(
             }
             Text("Mua ve thanh cong!", style = MaterialTheme.typography.headlineMedium)
             Text("Ve da duoc luu vao vi. Ban co the mo QR de check-in va nhan thong bao nhac lich truoc gio dien ra.")
-            ticket?.let { TicketCard(item = it, onOpenEvent = {}) }
+            ticket?.let { TicketCard(item = it, onOpenEvent = onOpenEvent) }
             Button(onClick = onOpenWallet, modifier = Modifier.fillMaxWidth()) { Text("Vao vi ve cua toi") }
             OutlinedButton(onClick = onGoHome, modifier = Modifier.fillMaxWidth()) { Text("Ve trang chu") }
         }
